@@ -1,0 +1,42 @@
+package com.gs.gis.geometry;
+
+import java.io.Serializable;
+
+public abstract class Geometry implements Serializable {
+	private static final long serialVersionUID = 5594065733859514709L;
+
+	private int srid;
+
+	public Geometry(int srid) {
+		this.srid = srid;
+	}
+
+	public int getSrid() {
+		return srid;
+	}
+
+	public void setSrid(int srid) {
+		this.srid = srid;
+	}
+	
+	
+	public abstract String getGeometryType();
+	
+	public abstract Geometry getEnvelope();
+	
+	public abstract int getDimension();
+
+	public abstract int getCoordinateDimension();
+
+	public abstract boolean isEmpty();
+
+	public abstract boolean is3D();
+
+	public abstract boolean isMeasured();
+	
+	public abstract Coordinate getCoordinate();
+	
+	public abstract String asText();
+	
+	public abstract byte[] asBinary();
+}
