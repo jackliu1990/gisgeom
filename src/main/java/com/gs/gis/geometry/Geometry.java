@@ -6,6 +6,8 @@ public abstract class Geometry implements Serializable {
 	private static final long serialVersionUID = 5594065733859514709L;
 
 	private int srid;
+	
+	public Geometry(){}
 
 	public Geometry(int srid) {
 		this.srid = srid;
