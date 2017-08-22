@@ -99,7 +99,8 @@ public class Coordinate {
 		return dimension;
 	}
 	
-	public String toString(){
+	public String toString()
+	{
 		return "("+x+", "+y+", "+z+")";
 	}
 }

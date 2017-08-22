@@ -23,19 +23,19 @@ public class AppTest
     public AppTest( String testName ) throws JsonProcessingException
     {
         super( testName );
-        //Coordinate a = new Coordinate();
-      //  Point b = new Point(a,3857);
-        //ObjectMapper mapper = new ObjectMapper();
-        //String pointGeoJson=mapper.writeValueAsString(b);
-       // System.out.println(b.getGeometryType());
-       // System.out.print(pointGeoJson);
+        Coordinate a = new Coordinate();
+        Point b = new Point(a,3857);
+        ObjectMapper mapper = new ObjectMapper();
+        String pointGeoJson=mapper.writeValueAsString(b);
+        System.out.println(b.getGeometryType());
+        //System.out.print(pointGeoJson);
        
-        GeometryFactory geometryFactory = new GeometryFactory();
+       /* GeometryFactory geometryFactory = new GeometryFactory();
         com.vividsolutions.jts.geom.Coordinate coord = new com.vividsolutions.jts.geom.Coordinate(109.013388, 32.715519);
         com.vividsolutions.jts.geom.Point point = geometryFactory.createPoint(coord);
         ObjectMapper mapper = new ObjectMapper();
         String pointGeoJson=mapper.writeValueAsString(point);
-         System.out.print(pointGeoJson);
+         System.out.print(pointGeoJson);*/
     }
 
     /**
