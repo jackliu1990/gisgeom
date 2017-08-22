@@ -83,4 +83,22 @@ public class Surface extends Geometry {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void normalize() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void reverse() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Geometry clone() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

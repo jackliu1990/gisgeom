@@ -2,7 +2,7 @@ package com.gs.gis.geometry;
 
 public class Curve extends Geometry {
 	private static final long serialVersionUID = -5925605665311300225L;
-
+	
 	protected Curve(int srid) {
 		super(srid);
 	}
@@ -29,8 +29,7 @@ public class Curve extends Geometry {
 
 	@Override
 	public String getGeometryType() {
-		// TODO Auto-generated method stub
-		return null;
+		return enumGeomType.Curve.toString();
 	}
 
 	@Override
@@ -80,6 +79,24 @@ public class Curve extends Geometry {
 
 	@Override
 	public byte[] asBinary() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void normalize() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void reverse() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Geometry clone() {
 		// TODO Auto-generated method stub
 		return null;
 	}

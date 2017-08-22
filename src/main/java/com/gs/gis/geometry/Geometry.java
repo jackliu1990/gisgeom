@@ -41,4 +41,9 @@ public abstract class Geometry implements Serializable {
 	
 	public abstract byte[] asBinary();
 	
+	public abstract void normalize();
+	
+	public abstract void reverse();
+	
+	public abstract Geometry clone();
 }

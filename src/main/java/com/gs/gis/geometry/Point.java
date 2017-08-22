@@ -14,28 +14,28 @@ public class Point extends Geometry {
 		if (coordinate == null) {
 			throw new IllegalStateException("getX called on empty Point");
 		}
-		return coordinate.x;
+		return coordinate.getOrdinate(Coordinate.X);
 	}
 
 	public double getY() {
 		if (coordinate == null) {
 			throw new IllegalStateException("getY called on empty Point");
 		}
-		return coordinate.y;
+		return coordinate.getOrdinate(Coordinate.Y);
 	}
 
 	public double getZ() {
 		if (coordinate == null) {
 			throw new IllegalStateException("getZ called on empty Point");
 		}
-		return coordinate.z;
+		return coordinate.getOrdinate(Coordinate.Z);
 	}
 
 	public double getM() {
 		if (coordinate == null) {
 			throw new IllegalStateException("getM called on empty Point");
 		}
-		return coordinate.m;
+		return coordinate.getOrdinate(Coordinate.M);
 	}
 
 	@Override
@@ -86,6 +86,24 @@ public class Point extends Geometry {
 
 	@Override
 	public byte[] asBinary() {
+		return null;
+	}
+
+	@Override
+	public void normalize() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void reverse() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Geometry clone() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

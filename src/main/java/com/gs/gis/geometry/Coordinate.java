@@ -1,12 +1,12 @@
 package com.gs.gis.geometry;
 
 public class Coordinate {
-	public double x;
-	public double y;
-	public double z = Double.NaN;
-	public double m = Double.NaN;
-	public boolean is3D = false;
-	public boolean isMeasured = false;
+	private double x;
+	private double y;
+	private double z = Double.NaN;
+	private double m = Double.NaN;
+	private boolean is3D = false;
+	private boolean isMeasured = false;
 
 	public static final int X = 0;
 	public static final int Y = 1;
@@ -18,6 +18,7 @@ public class Coordinate {
 		this.y = y;
 		this.z = z;
 		this.m = m;
+		is3D = true;
 		isMeasured = true;
 	}
 
@@ -34,6 +35,7 @@ public class Coordinate {
 
 	public Coordinate(Coordinate c) {
 		this(c.x, c.y, c.z);
+		is3D = true;
 	}
 
 	public Coordinate(double x, double y) {
@@ -45,6 +47,8 @@ public class Coordinate {
 		y = other.y;
 		z = other.z;
 		m = other.m;
+		is3D = true;
+		isMeasured = true;
 	}
 
 	public double getOrdinate(int ordinateIndex) {
@@ -72,9 +76,11 @@ public class Coordinate {
 			break;
 		case Z:
 			z = value;
+			is3D = true;
 			break;
 		case M:
 			m = value;
+			isMeasured = true;
 			break;
 		default:
 			throw new IllegalArgumentException("Invalid ordinate index: "
@@ -98,9 +104,8 @@ public class Coordinate {
 			dimension = 3;
 		return dimension;
 	}
-	
-	public String toString()
-	{
-		return "("+x+", "+y+", "+z+")";
+
+	public String toString() {
+		return "(" + x + ", " + y + ", " + z + ")";
 	}
 }

@@ -28,7 +28,8 @@ public class AppTest
         ObjectMapper mapper = new ObjectMapper();
         String pointGeoJson=mapper.writeValueAsString(b);
         System.out.println(b.getGeometryType());
-        //System.out.print(pointGeoJson);
+        System.out.print(pointGeoJson);
+        System.out.print(b.getSrid());
        
        /* GeometryFactory geometryFactory = new GeometryFactory();
         com.vividsolutions.jts.geom.Coordinate coord = new com.vividsolutions.jts.geom.Coordinate(109.013388, 32.715519);

@@ -18,11 +18,11 @@ public class GeometryCollection extends Geometry {
 		return enumGeomType.GeometryCollection.toString();
 	}
 	
-	public int numGeometries() {
+	public int getNumGeometries() {
 		return geometries.size();
 	}
 
-	public Geometry geometryN(int index) {
+	public Geometry getGeometryN(int index) {
 		return geometries.get(index);
 	}
 
@@ -44,8 +44,12 @@ public class GeometryCollection extends Geometry {
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		for(int i=0;i<geometries.size();i++){
+			if(!geometries.get(i).isEmpty()){
+				return false;
+			}
+		}
+		return true;
 	}
 
 	@Override
@@ -80,6 +84,24 @@ public class GeometryCollection extends Geometry {
 
 	@Override
 	public byte[] asBinary() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void normalize() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void reverse() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Geometry clone() {
 		// TODO Auto-generated method stub
 		return null;
 	}
