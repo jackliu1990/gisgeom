@@ -1,15 +1,25 @@
 package com.gs.gis.geometry;
 
-public class CoordinateSequenceImpl implements CoordinateSequence {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class CoordinateSequenceImpl implements CoordinateSequence,Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	private final List<Coordinate> coordinates;
+
+	public CoordinateSequenceImpl() {
+		coordinates = new ArrayList<Coordinate>();
+	}
 
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return coordinates.size();
 	}
 
 	public Coordinate get(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		return coordinates.get(index);
 	}
-
+	
 }

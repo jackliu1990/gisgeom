@@ -1,6 +1,7 @@
 package com.gs.gis.geometry;
 
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.*;
 
 public abstract class Geometry implements Serializable {
 	private static final long serialVersionUID = 5594065733859514709L;
@@ -21,24 +22,32 @@ public abstract class Geometry implements Serializable {
 		this.srid = srid;
 	}
 	
-	
+	@JsonIgnore
 	public abstract String getGeometryType();
 	
+	@JsonIgnore
 	public abstract Geometry getEnvelope();
 	
+	@JsonIgnore
 	public abstract int getDimension();
-
-	public abstract int getCoordinateDimension();
-
+	
+	@JsonIgnore
 	public abstract boolean isEmpty();
 
+	@JsonIgnore
 	public abstract boolean is3D();
 
+	@JsonIgnore
 	public abstract boolean isMeasured();
 	
 	public abstract Coordinate getCoordinate();
 	
+	public abstract Coordinate[] getCoordinates();
+	
+	@JsonIgnore
 	public abstract String asText();
 	
+	@JsonIgnore
 	public abstract byte[] asBinary();
+	
 }

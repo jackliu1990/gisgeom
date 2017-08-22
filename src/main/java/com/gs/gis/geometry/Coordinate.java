@@ -1,12 +1,12 @@
 package com.gs.gis.geometry;
 
 public class Coordinate {
-	private double x;
-	private double y;
-	private double z = Double.NaN;
-	private double m = Double.NaN;
-	private boolean is3D = false;
-	private boolean isMeasured = false;
+	public double x;
+	public double y;
+	public double z = Double.NaN;
+	public double m = Double.NaN;
+	public boolean is3D = false;
+	public boolean isMeasured = false;
 
 	public static final int X = 0;
 	public static final int Y = 1;
@@ -81,11 +81,11 @@ public class Coordinate {
 					+ ordinateIndex);
 		}
 	}
-	
-	public boolean is3D(){
+
+	public boolean is3D() {
 		return is3D;
 	}
-	
+
 	public boolean isMeasured() {
 		return isMeasured;
 	}
@@ -97,5 +97,9 @@ public class Coordinate {
 		else if (is3D ^ isMeasured == true)
 			dimension = 3;
 		return dimension;
+	}
+	
+	public String toString(){
+		return "("+x+", "+y+", "+z+")";
 	}
 }
