@@ -64,17 +64,7 @@ public class GeometryCollection extends Geometry {
 		return false;
 	}
 
-	@Override
-	public Coordinate getCoordinate() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Coordinate[] getCoordinates() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public String asText() {
@@ -88,23 +78,6 @@ public class GeometryCollection extends Geometry {
 		return null;
 	}
 
-	@Override
-	public void normalize() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void reverse() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Geometry clone() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public Geometry boundary() {

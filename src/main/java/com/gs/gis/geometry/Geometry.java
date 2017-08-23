@@ -33,20 +33,9 @@ public abstract class Geometry implements Serializable {
 
 	public abstract boolean isMeasured();
 	
-	public abstract Coordinate getCoordinate();
-	
-	public abstract Coordinate[] getCoordinates();
-	
 	public abstract String asText();
 	
 	public abstract byte[] asBinary();
 	
-	public abstract void normalize();
-	
-	public abstract void reverse();
-	
-	public abstract Geometry clone();
-	
-	abstract public Geometry boundary();
-
+	public abstract Geometry boundary();
 }

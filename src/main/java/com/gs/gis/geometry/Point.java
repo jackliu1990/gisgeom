@@ -69,41 +69,12 @@ public class Point extends Geometry {
 	}
 
 	@Override
-	public Coordinate getCoordinate() {
-		return coordinate;
-	}
-
-	@Override
-	public Coordinate[] getCoordinates() {
-		return isEmpty() ? new Coordinate[] {}
-				: new Coordinate[] { getCoordinate() };
-	}
-
-	@Override
 	public String asText() {
 		return null;
 	}
 
 	@Override
 	public byte[] asBinary() {
-		return null;
-	}
-
-	@Override
-	public void normalize() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void reverse() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Geometry clone() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
