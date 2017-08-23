@@ -105,4 +105,10 @@ public class GeometryCollection extends Geometry {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Geometry boundary() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

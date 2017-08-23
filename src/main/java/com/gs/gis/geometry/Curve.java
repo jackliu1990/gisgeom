@@ -1,103 +1,21 @@
 package com.gs.gis.geometry;
 
-public class Curve extends Geometry {
+public abstract class Curve extends Geometry {
 	private static final long serialVersionUID = -5925605665311300225L;
 	
-	protected Curve(int srid) {
-		super(srid);
-	}
+	abstract public double getLength();
 
-	public double getLength() {
-		return 0.0F;
-	}
+	abstract public Point startPoint();
 
-	public Point startPoint() {
-		return null;
-	}
+	abstract public Point endPoint();
 
-	public Point endPoint() {
-		return null;
-	}
+	abstract public boolean isClosed();
 
-	public boolean isClosed() {
-		return false;
-	}
-
-	public boolean isRing() {
-		return false;
-	}
+	abstract public boolean isRing();
 
 	@Override
 	public String getGeometryType() {
 		return enumGeomType.Curve.toString();
 	}
-
-	@Override
-	public Geometry getEnvelope() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int getDimension() {
-		return 1;
-	}
-
-	@Override
-	public boolean isEmpty() {
-		return false;
-	}
-
-	@Override
-	public boolean is3D() {
-		return false;
-	}
-
-	@Override
-	public boolean isMeasured() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public Coordinate getCoordinate() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Coordinate[] getCoordinates() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String asText() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public byte[] asBinary() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void normalize() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void reverse() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Geometry clone() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 }

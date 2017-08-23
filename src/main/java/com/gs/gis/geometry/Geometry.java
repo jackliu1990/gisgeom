@@ -46,4 +46,7 @@ public abstract class Geometry implements Serializable {
 	public abstract void reverse();
 	
 	public abstract Geometry clone();
+	
+	abstract public Geometry boundary();
+
 }
