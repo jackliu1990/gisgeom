@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKTReader;
+import com.vividsolutions.jts.io.WKTWriter;
 
 public class JTSTest {
 	 public static void main(String[] args) throws ParseException, JsonProcessingException {  
@@ -17,8 +18,10 @@ public class JTSTest {
      //System.out.print(pointGeoJson);
      
       WKTReader reader = new WKTReader( geometryFactory );  
-      com.vividsolutions.jts.geom.Point point2 = ( com.vividsolutions.jts.geom.Point) reader.read("POINT M (1 1 5 60)");  
-      System.out.print(point2.getCoordinate().z);
+      //com.vividsolutions.jts.geom.Point point2 = ( com.vividsolutions.jts.geom.Point) reader.read("POINT Z(1 1 5)");  
+      //System.out.print(point2.getCoordinate().z);
       
+      WKTWriter writer = new WKTWriter(3);
+      System.out.println(writer.write(point));
 	 }
 }
