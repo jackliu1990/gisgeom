@@ -9,4 +9,9 @@ public abstract class  MultiCurve extends GeometryCollection {
 	
 	public abstract boolean length();
 	
+	@Override
+	public String geometryType() {
+		return enumGeomType.MultiCurve.toString();
+	}
+	
 }

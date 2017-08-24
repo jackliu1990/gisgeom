@@ -2,6 +2,9 @@ package com.gs.gis.referenceSystems;
 
 public class SpatialReferenceSystem implements ReferenceSystem {
 	private int srid;
+	public SpatialReferenceSystem(int srid) {
+		this.srid =srid;
+	}
 	
 	public int getID(){
 		return this.srid;
