@@ -72,12 +72,12 @@ public class Point extends Geometry {
 
 	@Override
 	public boolean is3D() {
-		return isEmpty() ? false :(z==Double.NaN?false:true);
+		return is3D;
 	}
 
 	@Override
 	public boolean isMeasured() {
-		return isEmpty() ? false :(m==Double.NaN?false:true);
+		return isMeasured;
 	}
 
 	@Override
