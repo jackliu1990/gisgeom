@@ -1,9 +1,15 @@
 package com.gs.gis.referenceSystems;
 
 public class SpatialReferenceSystem implements ReferenceSystem {
+	private int srid;
+	
 	public int getID(){
-		return 3857;
+		return this.srid;
 	};
+	
+	public int setID(int srid) {
+		return this.srid;
+	}
 
 	public int dimension() {
 		// TODO Auto-generated method stub

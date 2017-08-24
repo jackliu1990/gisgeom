@@ -8,6 +8,10 @@ public abstract class Geometry implements Serializable {
 	private static final long serialVersionUID = 5594065733859514709L;
 
 	private SpatialReferenceSystem spatialRS;
+	
+	public Geometry() {
+		
+	}
 
 	public int SRID() {
 		return spatialRS.getID();
@@ -30,6 +34,8 @@ public abstract class Geometry implements Serializable {
 	public abstract byte[] asBinary();
 	
 	public abstract Geometry boundary();
+	
+	public abstract boolean equals(Geometry geometry); 
 	
 	public void setSpatialReference(SpatialReferenceSystem spatialRS){
 		this.spatialRS = spatialRS;

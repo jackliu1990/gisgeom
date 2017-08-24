@@ -3,9 +3,14 @@ package com.gs.gis.geometry;
 public class Line extends LineString {
 
 	private static final long serialVersionUID = -6958471671889533156L;
-
-	public Line(int srid) {
-		super(srid);
+	
+	private Point start,end;
+	public Line() {
+		
+	}
+	public Line(Point start,Point end) {
+		this.start = start;
+		this.end=end;
 	}
 
 	@Override

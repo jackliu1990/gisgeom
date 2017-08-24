@@ -83,4 +83,10 @@ public class GeometryCollection extends Geometry {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public boolean equals(Geometry geometry) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

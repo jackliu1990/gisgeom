@@ -5,12 +5,15 @@ import java.util.List;
 
 public class LineString extends Curve {
 	private static final long serialVersionUID = -8907208844625565572L;
-	private final List<Point> vertex;
+	private final List<Point> points;
 
-	public LineString(int srid) {
-		vertex = new ArrayList<Point>();
+	public LineString() {
+		points = new ArrayList<Point>();
 	}
-
+	
+	public LineString(List<Point> points) {
+		this.points = points;
+	}
 
 	@Override
 	public String geometryType() {
@@ -19,26 +22,26 @@ public class LineString extends Curve {
 	
 
 	public int numPoints() {
-		return vertex.size();
+		return points.size();
 	}
 
 	public void addPoint(Point point) {
-		vertex.add(point);
+		points.add(point);
 	}
-
+	
 	public Point pointN(int index) {
-		return vertex.get(index);
+		return points.get(index);
 	}
 
 	@Override
 	public Point startPoint() {
-		return vertex.get(0);
+		return points.get(0);
 	}
 
 	@Override
 	public Point endPoint() {
 		int num = numPoints();
-		return vertex.get(num - 1);
+		return points.get(num - 1);
 	}
 
 
@@ -51,7 +54,9 @@ public class LineString extends Curve {
 
 	@Override
 	public boolean isClosed() {
-		// TODO Auto-generated method stub
+		if(isEmpty()) {
+			return false;
+		}
 		return false;
 	}
 
@@ -72,29 +77,35 @@ public class LineString extends Curve {
 
 	@Override
 	public int dimension() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 1;
 	}
 
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return points.size()==0;
 	}
 
 
 	@Override
 	public boolean is3D() {
-		// TODO Auto-generated method stub
+	    for(int i=0;i<this.numPoints();i++) {
+	    	if(this.pointN(i).isEmpty()) {
+	    		return true;
+	    	}
+	    }
 		return false;
 	}
 
 
 	@Override
 	public boolean isMeasured() {
-		// TODO Auto-generated method stub
-		return false;
+		  for(int i=0;i<this.numPoints();i++) {
+		    	if(this.pointN(i).isMeasured()) {
+		    		return true;
+		    	}
+		    }
+			return false;
 	}
 
 	@Override
@@ -114,5 +125,11 @@ public class LineString extends Curve {
 	public Geometry boundary() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean equals(Geometry geometry) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

@@ -10,7 +10,7 @@ public class Point extends Geometry {
 	private boolean is3D = false;
 	private boolean isMeasured = false;
 	
-	public Point(){
+	public Point() {
 		
 	}
 	
@@ -94,5 +94,11 @@ public class Point extends Geometry {
 	public Geometry boundary() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean equals(Geometry geometry) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

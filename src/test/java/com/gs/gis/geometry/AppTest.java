@@ -20,13 +20,6 @@ public class AppTest
     public AppTest( String testName ) throws JsonProcessingException
     {
         super( testName );
-        /*Coordinate a = new Coordinate();
-        Point b = new Point(a,3857);
-        ObjectMapper mapper = new ObjectMapper();
-        String pointGeoJson=mapper.writeValueAsString(b);
-        System.out.println(b.getGeometryType());
-        System.out.print(pointGeoJson);
-        System.out.print(b.getSrid());*/
     }
 
     /**
