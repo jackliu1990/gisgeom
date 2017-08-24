@@ -4,12 +4,20 @@ public class MultiLineString extends MultiCurve {
 
 	private static final long serialVersionUID = 8789353483850475564L;
 
-	public MultiLineString(int srid) {
-		super(srid);
-	}
-	
 	@Override
-	public String getGeometryType() {
+	public String geometryType() {
 		return enumGeomType.MultiLineString.toString();
+	}
+
+	@Override
+	public boolean isClosed() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean length() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

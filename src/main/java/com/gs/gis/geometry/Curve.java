@@ -3,7 +3,7 @@ package com.gs.gis.geometry;
 public abstract class Curve extends Geometry {
 	private static final long serialVersionUID = -5925605665311300225L;
 	
-	abstract public double getLength();
+	abstract public double length();
 
 	abstract public Point startPoint();
 
@@ -14,7 +14,7 @@ public abstract class Curve extends Geometry {
 	abstract public boolean isRing();
 
 	@Override
-	public String getGeometryType() {
+	public String geometryType() {
 		return enumGeomType.Curve.toString();
 	}
 	

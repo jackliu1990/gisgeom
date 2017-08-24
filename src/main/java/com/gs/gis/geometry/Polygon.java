@@ -16,11 +16,11 @@ public class Polygon extends Surface {
 	}
 
 	@Override
-	public String getGeometryType() {
+	public String geometryType() {
 		return enumGeomType.Polygon.toString();
 	}
 
-	public LinearRing getExterorRing() {
+	public LinearRing exterorRing() {
 		return exterorRing;
 	}
 

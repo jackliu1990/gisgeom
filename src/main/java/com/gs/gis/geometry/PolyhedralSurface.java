@@ -25,9 +25,13 @@ public class PolyhedralSurface extends Surface {
 	public MultiPolygon boundingPolygons(Polygon polygon) {
 		return null;
 	}
+	
+	public boolean isClosed(){
+		return true;
+	}
 
 	@Override
-	public String getGeometryType() {
+	public String geometryType() {
 		return enumGeomType.PolyhedralSurface.toString();
 	}
 }

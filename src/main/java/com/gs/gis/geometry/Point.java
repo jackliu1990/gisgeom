@@ -3,69 +3,81 @@ package com.gs.gis.geometry;
 
 public class Point extends Geometry {
 	private static final long serialVersionUID = -5746654819330036683L;
-	private Coordinate coordinate;
-
-	public Point(Coordinate coordinate, int srid) {
-		super(srid);
-		this.coordinate = coordinate;
+	private double x;
+	private double y;
+	private double z = Double.NaN;
+	private double m = Double.NaN;
+	private boolean is3D = false;
+	private boolean isMeasured = false;
+	
+	public Point(){
+		
 	}
 	
-	public double getX() {
-		if (coordinate == null) {
-			throw new IllegalStateException("getX called on empty Point");
-		}
-		return coordinate.getOrdinate(Coordinate.X);
+	public Point (double x,double y){
+		this.x =x;
+		this.y =y;
+	}
+	
+	public Point(double x,double y,double z){
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		is3D = true;
+	}
+	
+	public Point(double x,double y,double z,double m){
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		is3D = true;
+		isMeasured = true;
+	}
+	
+	public double X() {	
+		return x;
 	}
 
-	public double getY() {
-		if (coordinate == null) {
-			throw new IllegalStateException("getY called on empty Point");
-		}
-		return coordinate.getOrdinate(Coordinate.Y);
+	public double Y() {
+		return y;
 	}
 
-	public double getZ() {
-		if (coordinate == null) {
-			throw new IllegalStateException("getZ called on empty Point");
-		}
-		return coordinate.getOrdinate(Coordinate.Z);
+	public double Z() {
+		return z;
 	}
 
-	public double getM() {
-		if (coordinate == null) {
-			throw new IllegalStateException("getM called on empty Point");
-		}
-		return coordinate.getOrdinate(Coordinate.M);
+	public double M() {
+		return m;
 	}
 
 	@Override
-	public String getGeometryType() {
+	public String geometryType() {
 		return enumGeomType.Point.toString();
 	}
 
 	@Override
-	public Geometry getEnvelope() {
+	public Geometry envelope() {
 		return null;
 	}
 
 	@Override
-	public int getDimension() {
+	public int dimension() {
 		return 0;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		return coordinate == null;
+		return x==Double.NaN||y==Double.NaN;
 	}
 
 	@Override
 	public boolean is3D() {
-		return isEmpty() ? false : coordinate.is3D();
+		return isEmpty() ? false :(z==Double.NaN?false:true);
 	}
 
 	@Override
 	public boolean isMeasured() {
-		return isEmpty() ? false : coordinate.isMeasured();
+		return isEmpty() ? false :(m==Double.NaN?false:true);
 	}
 
 	@Override

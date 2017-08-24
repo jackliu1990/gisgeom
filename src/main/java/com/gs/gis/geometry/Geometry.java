@@ -2,30 +2,22 @@ package com.gs.gis.geometry;
 
 import java.io.Serializable;
 
+import com.gs.gis.referenceSystems.SpatialReferenceSystem;
+
 public abstract class Geometry implements Serializable {
 	private static final long serialVersionUID = 5594065733859514709L;
 
-	private int srid;
-	
-	public Geometry(){}
+	private SpatialReferenceSystem spatialRS;
 
-	public Geometry(int srid) {
-		this.srid = srid;
-	}
-
-	public int getSrid() {
-		return srid;
-	}
-
-	public void setSrid(int srid) {
-		this.srid = srid;
+	public int SRID() {
+		return spatialRS.getID();
 	}
 	
-	public abstract String getGeometryType();
+	public abstract String geometryType();
 	
-	public abstract Geometry getEnvelope();
+	public abstract Geometry envelope();
 	
-	public abstract int getDimension();
+	public abstract int dimension();
 	
 	public abstract boolean isEmpty();
 
@@ -38,4 +30,8 @@ public abstract class Geometry implements Serializable {
 	public abstract byte[] asBinary();
 	
 	public abstract Geometry boundary();
+	
+	public void setSpatialReference(SpatialReferenceSystem spatialRS){
+		this.spatialRS = spatialRS;
+	}
 }

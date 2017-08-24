@@ -9,7 +9,7 @@ public class TIN extends PolyhedralSurface {
 	}
 	
 	@Override
-	public String getGeometryType() {
+	public String geometryType() {
 		return enumGeomType.TIN.toString();
 	}
 }

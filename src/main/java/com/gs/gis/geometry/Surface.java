@@ -5,7 +5,6 @@ public class Surface extends Geometry {
 	private static final long serialVersionUID = -6075485091792226407L;
 
 	protected Surface(int srid) {
-		super(srid);
 	}
 	
 	public double area() {
@@ -26,19 +25,19 @@ public class Surface extends Geometry {
 	}
 
 	@Override
-	public String getGeometryType() {
+	public String geometryType() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Geometry getEnvelope() {
+	public Geometry envelope() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int getDimension() {
+	public int dimension() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

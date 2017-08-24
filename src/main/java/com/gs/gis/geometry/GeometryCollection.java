@@ -8,21 +8,20 @@ public class GeometryCollection extends Geometry {
 	private static final long serialVersionUID = -4110148892147283192L;
 	private final List<Geometry> geometries;
 
-	public GeometryCollection(int srid) {
-		super(srid);
+	public GeometryCollection() {
 		geometries = new ArrayList<Geometry>();
 	}
 
 	@Override
-	public String getGeometryType() {
+	public String geometryType() {
 		return enumGeomType.GeometryCollection.toString();
 	}
 	
-	public int getNumGeometries() {
+	public int numGeometries() {
 		return geometries.size();
 	}
 
-	public Geometry getGeometryN(int index) {
+	public Geometry geometryN(int index) {
 		return geometries.get(index);
 	}
 
@@ -31,13 +30,13 @@ public class GeometryCollection extends Geometry {
 	}
 
 	@Override
-	public Geometry getEnvelope() {
+	public Geometry envelope() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int getDimension() {
+	public int dimension() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

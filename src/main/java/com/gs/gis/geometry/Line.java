@@ -10,7 +10,7 @@ public class Line extends LineString {
 
 	@Override
 	public void addPoint(Point point) {
-		int num = getNumPoints();
+		int num = numPoints();
 		if (num >= 2)
 			return;
 		super.addPoint(point);

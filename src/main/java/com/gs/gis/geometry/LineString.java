@@ -13,12 +13,12 @@ public class LineString extends Curve {
 
 
 	@Override
-	public String getGeometryType() {
+	public String geometryType() {
 		return enumGeomType.LineString.toString();
 	}
 	
 
-	public int getNumPoints() {
+	public int numPoints() {
 		return vertex.size();
 	}
 
@@ -37,13 +37,13 @@ public class LineString extends Curve {
 
 	@Override
 	public Point endPoint() {
-		int num = getNumPoints();
+		int num = numPoints();
 		return vertex.get(num - 1);
 	}
 
 
 	@Override
-	public double getLength() {
+	public double length() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -64,14 +64,14 @@ public class LineString extends Curve {
 
 
 	@Override
-	public Geometry getEnvelope() {
+	public Geometry envelope() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 
 	@Override
-	public int getDimension() {
+	public int dimension() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
