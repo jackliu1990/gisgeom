@@ -1,19 +1,21 @@
 package com.gs.gis.geometry;
 
-public class MultiSurface extends GeometryCollection {
+public  abstract class MultiSurface extends GeometryCollection {
 
 	private static final long serialVersionUID = -576621089666334510L;
 	
-	public double area() {
-		return 0.0F;
+	public MultiSurface(){
+		
 	}
 	
-	public Point centroid() {
-		return null;
+	public MultiSurface(Surface[] surfaces){
+		super(surfaces);
 	}
 	
-	public Point pointOnSurface() {
-		return null;
-	}
+	public abstract double area();
+	
+	public abstract Point centroid();
+	
+	public abstract Point pointOnSurface();
 
 }

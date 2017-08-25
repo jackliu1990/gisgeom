@@ -36,10 +36,24 @@ public class LinearRing extends LineString {
 			addPoint(point);
 		}
 	}
+	
+	/**
+	   * Tests whether this ring is closed.
+	   * Empty rings are closed by definition.
+	   * 
+	   * @return true if this ring is closed
+	   */
+	@Override
+	public boolean isClosed(){
+		if(isEmpty()){
+			return true;
+		}
+		return super.isClosed();
+	}
 
 	@Override
-	public boolean isRing() {
-		return true;
+	public String geometryType() {
+		return enumGeomType.LinearRing.toString();
 	}
 
 }

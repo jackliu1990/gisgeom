@@ -1,15 +1,17 @@
 package com.gs.gis.geometry;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class GeometryCollection extends Geometry {
 
 	private static final long serialVersionUID = -4110148892147283192L;
-	private final List<Geometry> geometries;
+	private final Geometry[] geometries;
 
 	public GeometryCollection() {
-		geometries = new ArrayList<Geometry>();
+		super();
+		geometries = new Geometry[]{};
+	}
+	
+	public GeometryCollection(Geometry[] geometries){
+		this.geometries = geometries;
 	}
 
 	@Override
@@ -18,15 +20,16 @@ public class GeometryCollection extends Geometry {
 	}
 	
 	public int numGeometries() {
-		return geometries.size();
+		return geometries.length;
 	}
 
 	public Geometry geometryN(int index) {
-		return geometries.get(index);
+		return geometries[index];
 	}
 
 	public void addGeometry(Geometry geometry) {
-		geometries.add(geometry);
+	    int index = geometries.length+1;
+		geometries[index]=geometry;
 	}
 
 	@Override
@@ -37,14 +40,17 @@ public class GeometryCollection extends Geometry {
 
 	@Override
 	public int dimension() {
-		// TODO Auto-generated method stub
-		return 0;
+		int dimension = Dimension.FALSE;
+		for(int i=0;i<geometries.length;i++){
+			dimension = Math.max(dimension, geometries[i].dimension());
+		}
+		return dimension;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		for(int i=0;i<geometries.size();i++){
-			if(!geometries.get(i).isEmpty()){
+		for(int i=0;i<geometries.length;i++){
+			if(!geometries[i].isEmpty()){
 				return false;
 			}
 		}
@@ -53,14 +59,12 @@ public class GeometryCollection extends Geometry {
 
 	@Override
 	public boolean is3D() {
-		// TODO Auto-generated method stub
-		return false;
+		return !isEmpty()&&geometries[0].is3D();
 	}
 
 	@Override
 	public boolean isMeasured() {
-		// TODO Auto-generated method stub
-		return false;
+		return !isEmpty()&&geometries[0].isMeasured();
 	}
 
 	

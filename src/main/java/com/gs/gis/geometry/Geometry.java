@@ -40,4 +40,9 @@ public abstract class Geometry implements Serializable {
 	public void setSpatialReference(SpatialReferenceSystem spatialRS){
 		this.spatialRS = spatialRS;
 	}
+	
+	public boolean isSimple()
+    {
+	   return true;
+    }
 }

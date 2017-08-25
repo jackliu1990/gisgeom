@@ -9,10 +9,14 @@ public class Polygon extends Surface {
 	private final LinearRing exterorRing;
 	private final List<LinearRing> interiorRings;
 
-	public Polygon(LinearRing exterorRing, int srid) {
-		super(srid);
+	public Polygon(LinearRing exterorRing) {
 		this.exterorRing = exterorRing;
 		interiorRings = new ArrayList<LinearRing>();
+	}
+	
+	@Override
+	public int dimension(){
+		return 2;
 	}
 
 	@Override

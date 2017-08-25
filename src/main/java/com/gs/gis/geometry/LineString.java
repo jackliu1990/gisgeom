@@ -63,8 +63,7 @@ public class LineString extends Curve {
 
 	@Override
 	public boolean isRing() {
-		// TODO Auto-generated method stub
-		return false;
+		return isClosed() && isSimple();
 	}
 
 
@@ -89,23 +88,13 @@ public class LineString extends Curve {
 
 	@Override
 	public boolean is3D() {
-	    for(int i=0;i<this.numPoints();i++) {
-	    	if(this.pointN(i).isEmpty()) {
-	    		return true;
-	    	}
-	    }
-		return false;
+		return !isEmpty()&&this.pointN(0).is3D();
 	}
 
 
 	@Override
 	public boolean isMeasured() {
-		  for(int i=0;i<this.numPoints();i++) {
-		    	if(this.pointN(i).isMeasured()) {
-		    		return true;
-		    	}
-		    }
-			return false;
+		return !isEmpty()&&this.pointN(0).isMeasured();
 	}
 
 	@Override
