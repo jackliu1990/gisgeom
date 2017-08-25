@@ -4,8 +4,11 @@ public class Triangle extends Polygon {
 
 	private static final long serialVersionUID = -574969820626952180L;
 
-	public Triangle(LinearRing exterorRing, int srid) {
-		super(exterorRing, srid);
+	public Triangle(){
+		
+	}
+	
+	public Triangle(LinearRing exterorRing) {
 	}
 
 	@Override

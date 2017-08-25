@@ -4,8 +4,7 @@ public class TIN extends PolyhedralSurface {
 
 	private static final long serialVersionUID = -8870541462672402111L;
 
-	public TIN(int srid) {
-		super(srid);
+	public TIN() {
 	}
 	
 	@Override
