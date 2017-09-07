@@ -93,4 +93,13 @@ public class GeometryCollection extends Geometry {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	@Override
+	  public int numPoints() {
+		    int numPoints = 0;
+		    for (int i = 0; i < geometries.length; i++) {
+		      numPoints += ((Geometry) geometries[i]).numPoints();
+		    }
+		    return numPoints;
+		  }
 }

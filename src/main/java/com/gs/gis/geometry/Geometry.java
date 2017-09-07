@@ -17,6 +17,48 @@ public abstract class Geometry implements Serializable {
 		return spatialRS.getID();
 	}
 	
+	/**
+	   * Returns true if the array contains any non-empty <code>Geometry</code>s.
+	   *
+	   *@param  geometries  an array of <code>Geometry</code>s; no elements may be
+	   *      <code>null</code>
+	   *@return             <code>true</code> if any of the <code>Geometry</code>s
+	   *      <code>isEmpty</code> methods return <code>false</code>
+	   */
+	  protected static boolean hasNonEmptyElements(Geometry[] geometries) {
+	    for (int i = 0; i < geometries.length; i++) {
+	      if (!geometries[i].isEmpty()) {
+	        return true;
+	      }
+	    }
+	    return false;
+	  }
+
+	  /**
+	   *  Returns true if the array contains any <code>null</code> elements.
+	   *
+	   *@param  array  an array to validate
+	   *@return        <code>true</code> if any of <code>array</code>s elements are
+	   *      <code>null</code>
+	   */
+	  protected static boolean hasNullElements(Object[] array) {
+	    for (int i = 0; i < array.length; i++) {
+	      if (array[i] == null) {
+	        return true;
+	      }
+	    }
+	    return false;
+	  }
+	  
+	  /**
+	   *  Returns the count of this <code>Geometry</code>s vertices. The <code>Geometry</code>
+	   *  s contained by composite <code>Geometry</code>s must be
+	   *  Geometry's; that is, they must implement <code>getNumPoints</code>
+	   *
+	   *@return    the number of vertices in this <code>Geometry</code>
+	   */
+	public abstract int numPoints();  
+	
 	public abstract String geometryType();
 	
 	public abstract Geometry envelope();

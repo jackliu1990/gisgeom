@@ -9,6 +9,7 @@ public class Triangle extends Polygon {
 	}
 	
 	public Triangle(LinearRing exterorRing) {
+		super(exterorRing);
 	}
 
 	@Override

@@ -8,7 +8,7 @@ public abstract class Surface extends Geometry {
 		
 	}
 	
-	public  double area() {
+	public double area() {
 		return 0.0F;
 	}
 	

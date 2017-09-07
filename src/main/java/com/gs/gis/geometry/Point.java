@@ -91,6 +91,11 @@ public class Point extends Geometry {
 	}
 
 	@Override
+    public int numPoints() {
+	    return isEmpty() ? 0 : 1;
+	  }
+
+	@Override
 	public Geometry boundary() {
 		// TODO Auto-generated method stub
 		return null;

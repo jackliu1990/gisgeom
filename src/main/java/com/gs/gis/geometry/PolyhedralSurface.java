@@ -1,31 +1,29 @@
 package com.gs.gis.geometry;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class PolyhedralSurface extends Surface {
 
-	private final List<Polygon> patchs;
+	private final Polygon[] patchs;
 
 	private static final long serialVersionUID = -4244106348263147023L;
 
 	public PolyhedralSurface() {
-		patchs = new ArrayList<Polygon>();
+		patchs = new Polygon[]{};
 	}
 
 	public int numPatches() {
-		return patchs.size();
+		return patchs.length;
 	}
 
 	public Polygon patchN(int index) {
-		return patchs.get(index);
+		return patchs[index];
 	}
 
 	public MultiPolygon boundingPolygons(Polygon polygon) {
 		return null;
 	}
-	
-	public boolean isClosed(){
+
+	public boolean isClosed() {
 		return true;
 	}
 
@@ -80,5 +78,14 @@ public class PolyhedralSurface extends Surface {
 	public boolean equals(Geometry geometry) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public int numPoints() {
+		int numPoints = 0;
+		for (int i = 0; i < numPatches(); i++) {
+			numPoints += patchN(i).numPoints();
+		}
+		return numPoints;
 	}
 }
