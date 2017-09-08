@@ -1,16 +1,19 @@
 package com.gs.gis.geometry;
 
-public class GeometryCollection extends Geometry {
+import java.util.ArrayList;
+import java.util.List;
+
+public class GeometryCollection<T extends Geometry> extends Geometry {
 
 	private static final long serialVersionUID = -4110148892147283192L;
-	private final Geometry[] geometries;
+	private final List<T> geometries;
 
 	public GeometryCollection() {
 		super();
-		geometries = new Geometry[]{};
+		geometries = new ArrayList<T>();
 	}
 	
-	public GeometryCollection(Geometry[] geometries){
+	public GeometryCollection(List<T> geometries){
 		this.geometries = geometries;
 	}
 
@@ -20,16 +23,15 @@ public class GeometryCollection extends Geometry {
 	}
 	
 	public int numGeometries() {
-		return geometries.length;
+		return geometries.size();
 	}
 
 	public Geometry geometryN(int index) {
-		return geometries[index];
+		return geometries.get(index);
 	}
 
-	public void addGeometry(Geometry geometry) {
-	    int index = geometries.length+1;
-		geometries[index]=geometry;
+	public void addGeometry(T geometry) {
+		geometries.add(geometry);
 	}
 
 	@Override
@@ -41,16 +43,16 @@ public class GeometryCollection extends Geometry {
 	@Override
 	public int dimension() {
 		int dimension = Dimension.FALSE;
-		for(int i=0;i<geometries.length;i++){
-			dimension = Math.max(dimension, geometries[i].dimension());
+		for(int i=0;i<this.numGeometries();i++){
+			dimension = Math.max(dimension, this.geometryN(i).dimension());
 		}
 		return dimension;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		for(int i=0;i<geometries.length;i++){
-			if(!geometries[i].isEmpty()){
+		for(int i=0;i<this.numGeometries();i++){
+			if(!this.geometryN(i).isEmpty()){
 				return false;
 			}
 		}
@@ -59,16 +61,15 @@ public class GeometryCollection extends Geometry {
 
 	@Override
 	public boolean is3D() {
-		return !isEmpty()&&geometries[0].is3D();
+		return !isEmpty()&&this.geometryN(0).is3D();
 	}
 
 	@Override
 	public boolean isMeasured() {
-		return !isEmpty()&&geometries[0].isMeasured();
+		return !isEmpty()&&this.geometryN(0).isMeasured();
 	}
-
 	
-
+	
 	@Override
 	public String asText() {
 		// TODO Auto-generated method stub
@@ -97,8 +98,8 @@ public class GeometryCollection extends Geometry {
 	@Override
 	  public int numPoints() {
 		    int numPoints = 0;
-		    for (int i = 0; i < geometries.length; i++) {
-		      numPoints += ((Geometry) geometries[i]).numPoints();
+		    for (int i = 0; i < this.numGeometries(); i++) {
+		      numPoints += ((Geometry) this.geometryN(i)).numPoints();
 		    }
 		    return numPoints;
 		  }

@@ -1,6 +1,8 @@
 package com.gs.gis.geometry;
 
-public class MultiLineString extends MultiCurve {
+import java.util.List;
+
+public class MultiLineString extends MultiCurve<LineString> {
 
 	private static final long serialVersionUID = 8789353483850475564L;
 	
@@ -8,7 +10,7 @@ public class MultiLineString extends MultiCurve {
 		
 	}
 	
-	public MultiLineString(LineString[] lineStrings){
+	public MultiLineString(List<LineString> lineStrings){
 	       super(lineStrings);
 	}
     

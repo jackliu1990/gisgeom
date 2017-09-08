@@ -1,5 +1,7 @@
 package com.gs.gis.geometry;
 
+import java.util.List;
+
 
 public class LinearRing extends LineString {
 
@@ -14,7 +16,7 @@ public class LinearRing extends LineString {
 
 	}
 
-	public LinearRing(Point[] points) {
+	public LinearRing(List<Point> points) {
 		super(points);
 		validateConstruction();
 	}

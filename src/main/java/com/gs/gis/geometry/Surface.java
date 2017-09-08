@@ -21,7 +21,7 @@ public abstract class Surface extends Geometry {
 	}
 	
 	@Override
-	public MultiCurve boundary() {
+	public MultiCurve<Curve> boundary() {
 		return null;
 	}
 }

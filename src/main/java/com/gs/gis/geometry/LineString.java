@@ -1,15 +1,18 @@
 package com.gs.gis.geometry;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class LineString extends Curve {
 	private static final long serialVersionUID = -8907208844625565572L;
-	private final Point[] points;
+	private final List<Point> points;
 
 	public LineString() {
-		points = new Point[]{};
+		points = new ArrayList<Point>();
 	}
 	
-	public LineString(Point[] points) {
+	public LineString(List<Point> points) {
 		this.points = points;
 	}
 
@@ -20,29 +23,26 @@ public class LineString extends Curve {
 	
 
 	public int numPoints() {
-		return points.length;
+		return points.size();
 	}
 
 	public void addPoint(Point point) {
-		int index = points.length+1;
-		points[index]=point;
+		points.add(point);
 	}
 	
 	public Point pointN(int index) {
-		return points[index];
+		return points.get(index);
 	}
 
 	@Override
 	public Point startPoint() {
-		return points[0];
+		return points.get(0);
 	}
 
 	@Override
 	public Point endPoint() {
-		int num = numPoints();
-		return points[num-1];
+		return points.get(this.numPoints()-1);
 	}
-
 
 	@Override
 	public double length() {
@@ -81,7 +81,7 @@ public class LineString extends Curve {
 
 	@Override
 	public boolean isEmpty() {
-		return points.length==0;
+		return this.numPoints()==0;
 	}
 
 

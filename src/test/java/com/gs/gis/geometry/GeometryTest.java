@@ -13,8 +13,13 @@ public class GeometryTest {
 	@Test
 	public void CreatePoint() throws JsonProcessingException {
 		SpatialReferenceSystem spatialReference = new SpatialReferenceSystem(4326);
-		Point point = new Point(116,40);
+		Point point = new Point(116,40,2345);
 		point.setSpatialReference(spatialReference);
 		System.out.print(new ObjectMapper().writeValueAsString(point));
+		
+		
+		MultiPoint multiPoint = new MultiPoint();
+		multiPoint.addGeometry(point);
+		System.out.print(multiPoint.is3D());
 	}
 }

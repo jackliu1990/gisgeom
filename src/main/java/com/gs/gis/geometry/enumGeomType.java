@@ -2,7 +2,7 @@ package com.gs.gis.geometry;
 
 public enum enumGeomType {
 	Geometry("Geometry"),
-	Point("1"),
+	Point("POINT"),
 	Line("Line"),
 	LineString("LineString"),
 	LinearRing("LinearRing"),

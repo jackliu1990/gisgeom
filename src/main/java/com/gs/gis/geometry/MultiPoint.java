@@ -1,6 +1,8 @@
 package com.gs.gis.geometry;
 
-public class MultiPoint extends GeometryCollection {
+import java.util.List;
+
+public class MultiPoint extends GeometryCollection<Point> {
 
 	private static final long serialVersionUID = -4206522180686962708L;
 
@@ -8,7 +10,7 @@ public class MultiPoint extends GeometryCollection {
 		
 	}
 	
-	public MultiPoint(Point[] points){
+	public MultiPoint(List<Point> points){
 		super(points);
 	}
 	
@@ -24,6 +26,6 @@ public class MultiPoint extends GeometryCollection {
 	
 	@Override
 	public Geometry boundary(){
-		return new GeometryCollection();
+		return new GeometryCollection<Point>();
 	}
 }

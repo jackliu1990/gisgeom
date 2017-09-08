@@ -1,5 +1,7 @@
 package com.gs.gis.geometry;
 
+import java.util.List;
+
 
 public class Line extends LineString {
 
@@ -9,7 +11,7 @@ public class Line extends LineString {
 		super();
 	}
 	
-	public Line(Point[] points){
+	public Line(List<Point> points){
 		super(points);
 		validateConstruction();
 	}

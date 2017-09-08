@@ -1,6 +1,8 @@
 package com.gs.gis.geometry;
 
-public class MultiPolygon extends MultiSurface {
+import java.util.List;
+
+public class MultiPolygon extends MultiSurface<Polygon> {
 
 	private static final long serialVersionUID = -8538253533188517173L;
 	
@@ -8,7 +10,7 @@ public class MultiPolygon extends MultiSurface {
 		
 	}
 	
-	public MultiPolygon(Polygon[] polygons){
+	public MultiPolygon(List<Polygon> polygons){
 		super(polygons);
 	}
 	

@@ -1,6 +1,8 @@
 package com.gs.gis.geometry;
 
-public  abstract class MultiSurface extends GeometryCollection {
+import java.util.List;
+
+public  abstract class MultiSurface<T extends Surface> extends GeometryCollection<T> {
 
 	private static final long serialVersionUID = -576621089666334510L;
 	
@@ -8,7 +10,7 @@ public  abstract class MultiSurface extends GeometryCollection {
 		
 	}
 	
-	public MultiSurface(Surface[] surfaces){
+	public MultiSurface(List<T> surfaces){
 		super(surfaces);
 	}
 	
