@@ -13,7 +13,7 @@ public class Triangle extends Polygon {
 	}
 
 	@Override
-	public String geometryType() {
-		return enumGeomType.Triangle.toString();
+	public EnumGeomType geometryType() {
+		return EnumGeomType.Triangle;
 	}
 }

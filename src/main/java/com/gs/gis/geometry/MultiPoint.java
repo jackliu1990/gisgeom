@@ -15,8 +15,8 @@ public class MultiPoint extends GeometryCollection<Point> {
 	}
 	
 	@Override
-	public String geometryType() {
-		return enumGeomType.MultiPoint.toString();
+	public EnumGeomType geometryType() {
+		return EnumGeomType.MultiPoint;
 	}
 	
 	@Override

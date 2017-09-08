@@ -40,8 +40,8 @@ public class Polygon extends Surface {
 	}
 
 	@Override
-	public String geometryType() {
-		return enumGeomType.Polygon.toString();
+	public EnumGeomType geometryType() {
+		return EnumGeomType.Polygon;
 	}
 
 	public LinearRing exterorRing() {

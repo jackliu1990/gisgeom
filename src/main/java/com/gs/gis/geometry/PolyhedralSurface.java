@@ -1,22 +1,25 @@
 package com.gs.gis.geometry;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class PolyhedralSurface extends Surface {
 
-	private final Polygon[] patchs;
+	private final List<Polygon> patchs;
 
 	private static final long serialVersionUID = -4244106348263147023L;
 
 	public PolyhedralSurface() {
-		patchs = new Polygon[]{};
+		patchs = new ArrayList<Polygon>();
 	}
 
 	public int numPatches() {
-		return patchs.length;
+		return patchs.size();
 	}
 
 	public Polygon patchN(int index) {
-		return patchs[index];
+		return patchs.get(index);
 	}
 
 	public MultiPolygon boundingPolygons(Polygon polygon) {
@@ -28,8 +31,8 @@ public class PolyhedralSurface extends Surface {
 	}
 
 	@Override
-	public String geometryType() {
-		return enumGeomType.PolyhedralSurface.toString();
+	public EnumGeomType geometryType() {
+		return EnumGeomType.PolyhedralSurface;
 	}
 
 	@Override

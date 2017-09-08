@@ -20,8 +20,8 @@ public class MultiPolygon extends MultiSurface<Polygon> {
 	}
 	
 	@Override
-	public String geometryType() {
-		return enumGeomType.MultiPolygon.toString();
+	public EnumGeomType geometryType() {
+		return EnumGeomType.MultiPolygon;
 	}
 
 	@Override

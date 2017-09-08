@@ -17,8 +17,8 @@ public class LineString extends Curve {
 	}
 
 	@Override
-	public String geometryType() {
-		return enumGeomType.LineString.toString();
+	public EnumGeomType geometryType() {
+		return EnumGeomType.LineString;
 	}
 	
 

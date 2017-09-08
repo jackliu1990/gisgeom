@@ -18,8 +18,8 @@ public class GeometryCollection<T extends Geometry> extends Geometry {
 	}
 
 	@Override
-	public String geometryType() {
-		return enumGeomType.GeometryCollection.toString();
+	public EnumGeomType geometryType() {
+		return EnumGeomType.GeometryCollection;
 	}
 	
 	public int numGeometries() {

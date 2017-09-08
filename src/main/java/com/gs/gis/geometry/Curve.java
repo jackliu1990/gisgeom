@@ -14,8 +14,8 @@ public abstract class Curve extends Geometry {
 	abstract public boolean isRing();
 
 	@Override
-	public String geometryType() {
-		return enumGeomType.Curve.toString();
+	public EnumGeomType geometryType() {
+		return EnumGeomType.Curve;
 	}
 	
 }

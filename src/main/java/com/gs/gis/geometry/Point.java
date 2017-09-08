@@ -51,8 +51,8 @@ public class Point extends Geometry {
 	}
 
 	@Override
-	public String geometryType() {
-		return enumGeomType.Point.toString();
+	public EnumGeomType geometryType() {
+		return EnumGeomType.Point;
 	}
 
 	@Override

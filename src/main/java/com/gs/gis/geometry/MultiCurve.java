@@ -19,8 +19,8 @@ public abstract class  MultiCurve <T extends Curve> extends GeometryCollection<T
 	public abstract boolean length();
 	
 	@Override
-	public String geometryType() {
-		return enumGeomType.MultiCurve.toString();
+	public EnumGeomType geometryType() {
+		return EnumGeomType.MultiCurve;
 	}
 	
 }

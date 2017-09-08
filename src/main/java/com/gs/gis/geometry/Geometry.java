@@ -59,7 +59,9 @@ public abstract class Geometry implements Serializable {
 	   */
 	public abstract int numPoints();  
 	
-	public abstract String geometryType();
+	public EnumGeomType geometryType(){
+	   return EnumGeomType.Geometry;	
+	}
 	
 	public abstract Geometry envelope();
 	
@@ -87,4 +89,5 @@ public abstract class Geometry implements Serializable {
     {
 	   return true;
     }
+	
 }

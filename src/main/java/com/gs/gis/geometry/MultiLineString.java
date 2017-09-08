@@ -15,8 +15,8 @@ public class MultiLineString extends MultiCurve<LineString> {
 	}
     
 	@Override
-	public String geometryType() {
-		return enumGeomType.MultiLineString.toString();
+	public EnumGeomType geometryType() {
+		return EnumGeomType.MultiLineString;
 	}
 	
 	public int dimension(){

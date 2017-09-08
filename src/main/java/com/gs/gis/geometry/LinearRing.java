@@ -53,8 +53,8 @@ public class LinearRing extends LineString {
 	}
 
 	@Override
-	public String geometryType() {
-		return enumGeomType.LinearRing.toString();
+	public EnumGeomType geometryType() {
+		return EnumGeomType.LineString;
 	}
 
 }

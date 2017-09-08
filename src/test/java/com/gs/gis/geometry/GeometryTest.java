@@ -21,5 +21,7 @@ public class GeometryTest {
 		MultiPoint multiPoint = new MultiPoint();
 		multiPoint.addGeometry(point);
 		System.out.print(multiPoint.is3D());
+		System.out.print(EnumGeomType.MULTIPOINT);
+		System.out.println(multiPoint.geometryType());
 	}
 }
