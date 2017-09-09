@@ -1,7 +1,5 @@
 package com.gs.gis.geometry;
 
-import static org.junit.Assert.*;
-
 import java.io.IOException;
 import java.nio.ByteOrder;
 
@@ -63,5 +61,12 @@ public class GeometryTest {
 	 	mil.nga.wkb.io.ByteWriter ngaByteWriter = new mil.nga.wkb.io.ByteWriter();
 	 	mil.nga.wkb.io.WkbGeometryWriter.writeGeometry(ngaByteWriter,ngaPoint);
 	 	System.out.println(ngaByteWriter.getBytes());
+	 	
+	 	for(int i=0;i<ngaByteWriter.getBytes().length;i++) {
+ 		if(ngaByteWriter.getBytes()[i]!=jtsWkb[i]) {
+ 			System.out.println(true);
+ 		}
+ 		System.out.println(false);
+	 	}
 	}
 }
