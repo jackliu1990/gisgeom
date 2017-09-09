@@ -64,11 +64,18 @@ public abstract class Geometry implements Serializable {
 	}
 	
 	public String typeWKT() {
-		return EnumGeomType.Geometry.typeWKT();
+		return this.geometryType().typeWKT();
 	}
 	
 	public int typeWKB() {
-		return EnumGeomType.Geometry.typeWKB();
+		int code= this.geometryType().typeWKB();
+		if (this.is3D()) {
+			code += 1000;
+		}
+		if (this.isMeasured()) {
+			code += 2000;
+		}
+		return code;
 	}
 	
 	public abstract Geometry envelope();

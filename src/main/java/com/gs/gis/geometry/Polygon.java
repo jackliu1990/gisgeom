@@ -114,23 +114,28 @@ public class Polygon extends Surface {
 	    }
 	    return numPoints;
 	  }
-	
-	
+
 	@Override
-	public String typeWKT() {
-		return EnumGeomType.Polygon.typeWKT();
-	}
-	
-	@Override
-	public int typeWKB() {
-		int code= EnumGeomType.Polygon.typeWKB();
-		if (this.is3D()) {
-			code += 1000;
-		}
-		if (this.isMeasured()) {
-			code += 2000;
-		}
-		return code;
+	public double area() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
+	@Override
+	public Point centroid() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Point pointOnSurface() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public MultiCurve<Curve> boundary() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

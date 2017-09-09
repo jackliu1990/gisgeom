@@ -91,4 +91,28 @@ public class PolyhedralSurface extends Surface {
 		}
 		return numPoints;
 	}
+
+	@Override
+	public double area() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Point centroid() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Point pointOnSurface() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public MultiCurve<Curve> boundary() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -41,5 +41,10 @@
   <artifactId>esri-geometry-api</artifactId>
   <version>1.2.1</version>
 </dependency>
+<dependency>
+    <groupId>mil.nga</groupId>
+    <artifactId>wkb</artifactId>
+    <version>1.0.3</version>
+</dependency>
   </dependencies>
 </project>

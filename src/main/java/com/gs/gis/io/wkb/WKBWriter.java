@@ -23,10 +23,10 @@ public class WKBWriter {
 		writer.writeByte(byteOrder);
 
 		// 写入Geometry type integer
-
 		writer.writeInt(geometry.typeWKB());
 		EnumGeomType geomType = geometry.geometryType();
 
+		//写入对应对象的几何信息包括点个数和点的对象集合
 		switch (geomType) {
 		case Geometry:
 			throw new RuntimeException("Unexpected Geometry Type of " + geomType.name() + " which is abstract");

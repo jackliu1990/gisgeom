@@ -8,20 +8,11 @@ public abstract class Surface extends Geometry {
 		
 	}
 	
-	public double area() {
-		return 0.0F;
-	}
+	abstract public double area();
 	
-	public Point centroid() {
-		return null;
-	}
+	abstract public Point centroid();
 	
-	public Point pointOnSurface() {
-		return null;
-	}
+	abstract public Point pointOnSurface();
 	
-	@Override
-	public MultiCurve<Curve> boundary() {
-		return null;
-	}
+	abstract public MultiCurve<Curve> boundary();
 }
