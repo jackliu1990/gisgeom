@@ -106,4 +106,21 @@ public class Point extends Geometry {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	@Override
+	public String typeWKT() {
+		return EnumGeomType.Point.typeWKT();
+	}
+	
+	@Override
+	public int typeWKB() {
+		int code= EnumGeomType.Point.typeWKB();
+		if (this.is3D()) {
+			code += 1000;
+		}
+		if (this.isMeasured()) {
+			code += 2000;
+		}
+		return code;
+	}
 }

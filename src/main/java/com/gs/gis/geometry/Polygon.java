@@ -1,10 +1,13 @@
 package com.gs.gis.geometry;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Polygon extends Surface {
 
 	private static final long serialVersionUID = -365994711439639146L;
 	private LinearRing exterorRing;
-	private LinearRing[] interiorRings;
+	private List<LinearRing> interiorRings;
 
 	public Polygon() {
 
@@ -12,27 +15,29 @@ public class Polygon extends Surface {
 
 	public Polygon(LinearRing exterorRing) {
 		this.exterorRing = exterorRing;
-		interiorRings = new LinearRing[] {};
+		interiorRings = new ArrayList<LinearRing>();
 	}
 
-	public Polygon(LinearRing exterorRing, LinearRing[] interiorRings) {
+	public Polygon(LinearRing exterorRing, List<LinearRing> interiorRings) {
 		if (exterorRing == null) {
 			exterorRing = new LinearRing();
 		}
 		if (interiorRings == null) {
-			interiorRings = new LinearRing[] {};
+			interiorRings = new ArrayList<LinearRing>();
 		}
-		if (hasNullElements(interiorRings)) {
+		if (hasNullElements(interiorRings.toArray())) {
 			throw new IllegalArgumentException(
 					"interiorRings must not contain null elements");
 		}
-		if (exterorRing.isEmpty() && hasNonEmptyElements(interiorRings)) {
+		if (exterorRing.isEmpty() && hasNonEmptyElements(interiorRings.toArray(new LinearRing[] {}))) {
 			throw new IllegalArgumentException(
 					"exterorRing is empty but interiorRings are not");
 		}
 		this.exterorRing = exterorRing;
 		this.interiorRings = interiorRings;
 	}
+	
+	
 
 	@Override
 	public int dimension() {
@@ -49,16 +54,15 @@ public class Polygon extends Surface {
 	}
 
 	public int numInteriorRings() {
-		return interiorRings.length;
+		return interiorRings.size();
 	}
 
 	public void addInteriorRing(LinearRing interiorRing) {
-		int index = interiorRings.length + 1;
-		interiorRings[index] = interiorRing;
+		interiorRings.add(interiorRing);
 	}
 
 	public LinearRing interiorRingN(int index) {
-		return interiorRings[index];
+		return interiorRings.get(index);
 	}
 
 	@Override
@@ -105,10 +109,28 @@ public class Polygon extends Surface {
 	@Override
 	 public int numPoints() {
 	    int numPoints = exterorRing.numPoints();
-	    for (int i = 0; i < interiorRings.length; i++) {
-	      numPoints += interiorRings[i].numPoints();
+	    for (int i = 0; i < this.numInteriorRings(); i++) {
+	      numPoints += this.interiorRingN(i).numPoints();
 	    }
 	    return numPoints;
 	  }
+	
+	
+	@Override
+	public String typeWKT() {
+		return EnumGeomType.Polygon.typeWKT();
+	}
+	
+	@Override
+	public int typeWKB() {
+		int code= EnumGeomType.Polygon.typeWKB();
+		if (this.is3D()) {
+			code += 1000;
+		}
+		if (this.isMeasured()) {
+			code += 2000;
+		}
+		return code;
+	}
 
 }
