@@ -29,7 +29,7 @@ public class GeometryTest {
 		System.out.println(multiPoint.geometryType());
 		
 		ByteWriter byteWriter = new ByteWriter();
-        byteWriter.setByteOrder(ByteOrder.BIG_ENDIAN);
+        byteWriter.setByteOrder(ByteOrder.LITTLE_ENDIAN);
 		WKBWriter.writeGeometry(byteWriter, point);
 		byte[] bytes=byteWriter.getBytes();
 		System.out.println(bytes);
@@ -37,7 +37,7 @@ public class GeometryTest {
 
 		  
 	     GeometryFactory geometryFactory = new GeometryFactory();
-	     com.vividsolutions.jts.geom.Coordinate coord = new com.vividsolutions.jts.geom.Coordinate(116.0,40.0,2345.0);
+	     com.vividsolutions.jts.geom.Coordinate coord = new com.vividsolutions.jts.geom.Coordinate(116.0,40.0);
 	     com.vividsolutions.jts.geom.Point pointJTS = geometryFactory.createPoint(coord);
 	     com.vividsolutions.jts.io.WKBWriter wkbwriterJts= new  com.vividsolutions.jts.io.WKBWriter(3);
 	     byte[] jtsWkb= wkbwriterJts.write(pointJTS);
@@ -56,9 +56,10 @@ public class GeometryTest {
 	 		System.out.println(false);
 	 	}*/
 	 	
-	 	mil.nga.wkb.geom.Point ngaPoint = new mil.nga.wkb.geom.Point(true,false,116.0,40.0);
+	 	mil.nga.wkb.geom.Point ngaPoint = new mil.nga.wkb.geom.Point(false,false,116.0,40.0);
 	 	ngaPoint.setZ(2345.0);
 	 	mil.nga.wkb.io.ByteWriter ngaByteWriter = new mil.nga.wkb.io.ByteWriter();
+	 	ngaByteWriter.setByteOrder(ByteOrder.LITTLE_ENDIAN);
 	 	mil.nga.wkb.io.WkbGeometryWriter.writeGeometry(ngaByteWriter,ngaPoint);
 	 	System.out.println(ngaByteWriter.getBytes());
 	 	

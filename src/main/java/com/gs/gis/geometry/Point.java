@@ -7,8 +7,6 @@ public class Point extends Geometry {
 	private double y;
 	private double z = Double.NaN;
 	private double m = Double.NaN;
-	private boolean is3D = false;
-	private boolean isMeasured = false;
 	
 	public Point() {
 		
@@ -23,31 +21,49 @@ public class Point extends Geometry {
 		this.x = x;
 		this.y = y;
 		this.z = z;
-		is3D = true;
+		this.setIs3D(true);
 	}
 	
 	public Point(double x,double y,double z,double m){
 		this.x = x;
 		this.y = y;
 		this.z = z;
-		is3D = true;
-		isMeasured = true;
+		this.setIs3D(true);
+		this.setIsMeasured(true);
 	}
 	
-	public double X() {	
+	public double getX() {	
 		return x;
 	}
 
-	public double Y() {
+	public double getY() {
 		return y;
 	}
 
-	public double Z() {
+	public double getZ() {
 		return z;
 	}
 
-	public double M() {
+	public double getM() {
 		return m;
+	}
+	
+	public void setX(double x){
+		this.x = x;
+	}
+	
+	public void setY(double y){
+		this.y = y;
+	}
+	
+	public void setZ(double z){
+		this.setIs3D(true);
+		this.z = z;
+	}
+	
+	public void setM(double m){
+		this.setIsMeasured(true);
+		this.m = m;
 	}
 
 	@Override
@@ -68,16 +84,6 @@ public class Point extends Geometry {
 	@Override
 	public boolean isEmpty() {
 		return x==Double.NaN||y==Double.NaN;
-	}
-
-	@Override
-	public boolean is3D() {
-		return is3D;
-	}
-
-	@Override
-	public boolean isMeasured() {
-		return isMeasured;
 	}
 
 	@Override

@@ -122,13 +122,13 @@ public class WKBWriter {
 	}
 
 	private static void writePoint(ByteWriter writer, Point point) throws IOException {
-		writer.writeDouble(point.X());
-		writer.writeDouble(point.Y());
+		writer.writeDouble(point.getX());
+		writer.writeDouble(point.getY());
 		if(point.is3D()) {
-			writer.writeDouble(point.Z());
+			writer.writeDouble(point.getZ());
 		}
 		if(point.isMeasured()) {
-			writer.writeDouble(point.M());
+			writer.writeDouble(point.getM());
 		}
 
 	}
