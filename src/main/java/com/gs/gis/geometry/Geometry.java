@@ -90,16 +90,16 @@ public abstract class Geometry implements Serializable {
 		this.is3D = is3D;
 	}
 	
-	public boolean is3D() {
-		return is3D;
+	public boolean is3D(){
+	    return this.is3D;	
 	}
 
 	public void setIsMeasured(boolean isMeasured){
 	    this.isMeasured = isMeasured;	
 	}
 	
-	public boolean isMeasured() {
-		return isMeasured;
+	public boolean isMeasured(){
+	    return this.isMeasured;	
 	}
 	
 	public abstract String asText();
