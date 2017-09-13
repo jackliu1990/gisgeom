@@ -17,19 +17,36 @@ import com.gs.gis.geometry.TIN;
 import com.gs.gis.geometry.Triangle;
 
 public class WKBWriter {
-	public static void writeGeometry(ByteWriter writer, Geometry geometry) throws IOException {
+
+	public static byte[] writeGeometry(Geometry geometry) {
+		ByteWriter byteWriter = new ByteWriter();
+		byteWriter.setByteOrder(ByteOrder.LITTLE_ENDIAN);
+		byte[] bytes = null;
+		try {
+			WKBWriter.writeGeometry(byteWriter, geometry);
+			bytes = byteWriter.getBytes();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return bytes;
+	}
+
+	public static void writeGeometry(ByteWriter writer, Geometry geometry)
+			throws IOException {
 		// 写入byte order type
-		byte byteOrder = writer.getByteOrder() == ByteOrder.BIG_ENDIAN ? (byte) 0 : (byte) 1;
+		byte byteOrder = writer.getByteOrder() == ByteOrder.BIG_ENDIAN ? (byte) 0
+				: (byte) 1;
 		writer.writeByte(byteOrder);
 
 		// 写入Geometry type integer
 		writer.writeInt(geometry.typeWKB());
 		EnumGeomType geomType = geometry.geometryType();
 
-		//写入对应对象的几何信息包括点个数和点的对象集合
+		// 写入对应对象的几何信息包括点个数和点的对象集合
 		switch (geomType) {
 		case Geometry:
-			throw new RuntimeException("Unexpected Geometry Type of " + geomType.name() + " which is abstract");
+			throw new RuntimeException("Unexpected Geometry Type of "
+					+ geomType.name() + " which is abstract");
 		case Point:
 			writePoint(writer, (Point) geometry);
 			break;
@@ -52,13 +69,17 @@ public class WKBWriter {
 			WriteGeometryCollection(writer, (GeometryCollection<?>) geometry);
 			break;
 		case MultiCurve:
-			throw new RuntimeException("Unexpected Geometry Type of " + geomType.name() + " which is abstract");
+			throw new RuntimeException("Unexpected Geometry Type of "
+					+ geomType.name() + " which is abstract");
 		case MultiSurface:
-			throw new RuntimeException("Unexpected Geometry Type of " + geomType.name() + " which is abstract");
+			throw new RuntimeException("Unexpected Geometry Type of "
+					+ geomType.name() + " which is abstract");
 		case Curve:
-			throw new RuntimeException("Unexpected Geometry Type of " + geomType.name() + " which is abstract");
+			throw new RuntimeException("Unexpected Geometry Type of "
+					+ geomType.name() + " which is abstract");
 		case Surface:
-			throw new RuntimeException("Unexpected Geometry Type of " + geomType.name() + " which is abstract");
+			throw new RuntimeException("Unexpected Geometry Type of "
+					+ geomType.name() + " which is abstract");
 		case PolyhedralSurface:
 			writePolyhedralSurface(writer, (PolyhedralSurface) geometry);
 			break;
@@ -83,22 +104,26 @@ public class WKBWriter {
 
 	}
 
-	private static void writePolyhedralSurface(ByteWriter writer, PolyhedralSurface geometry) {
+	private static void writePolyhedralSurface(ByteWriter writer,
+			PolyhedralSurface geometry) {
 		// TODO Auto-generated method stub
 
 	}
 
-	private static void WriteGeometryCollection(ByteWriter writer, GeometryCollection<?> geometry) {
+	private static void WriteGeometryCollection(ByteWriter writer,
+			GeometryCollection<?> geometry) {
 		// TODO Auto-generated method stub
 
 	}
 
-	private static void writeMultiPolygon(ByteWriter writer, MultiPolygon geometry) {
+	private static void writeMultiPolygon(ByteWriter writer,
+			MultiPolygon geometry) {
 		// TODO Auto-generated method stub
 
 	}
 
-	private static void writeMultiLineString(ByteWriter writer, MultiLineString geometry) {
+	private static void writeMultiLineString(ByteWriter writer,
+			MultiLineString geometry) {
 		// TODO Auto-generated method stub
 
 	}
@@ -113,21 +138,23 @@ public class WKBWriter {
 
 	}
 
-	private static void writeLineString(ByteWriter writer, LineString lineString) throws IOException {
-	     writer.writeInt(lineString.numPoints());
-	     for(int i=0;i<lineString.numPoints();i++) {
-	    	 writePoint(writer,lineString.pointN(i));
-	     }
+	private static void writeLineString(ByteWriter writer, LineString lineString)
+			throws IOException {
+		writer.writeInt(lineString.numPoints());
+		for (int i = 0; i < lineString.numPoints(); i++) {
+			writePoint(writer, lineString.pointN(i));
+		}
 
 	}
 
-	private static void writePoint(ByteWriter writer, Point point) throws IOException {
+	private static void writePoint(ByteWriter writer, Point point)
+			throws IOException {
 		writer.writeDouble(point.getX());
 		writer.writeDouble(point.getY());
-		if(point.is3D()) {
+		if (point.is3D()) {
 			writer.writeDouble(point.getZ());
 		}
-		if(point.isMeasured()) {
+		if (point.isMeasured()) {
 			writer.writeDouble(point.getM());
 		}
 

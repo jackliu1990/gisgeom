@@ -1,5 +1,7 @@
 package com.gs.gis.geometry;
 
+import com.gs.gis.io.wkb.WKBWriter;
+
 
 public class Point extends Geometry {
 	private static final long serialVersionUID = -5746654819330036683L;
@@ -97,7 +99,7 @@ public class Point extends Geometry {
 
 	@Override
 	public byte[] asBinary() {
-		return null;
+		return WKBWriter.writeGeometry(this);
 	}
 
 	@Override

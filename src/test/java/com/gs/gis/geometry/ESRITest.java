@@ -19,6 +19,6 @@ public class ESRITest {
 	   multiPoint.add(pt);
 	   multiPoint.add(pt1);
 	   com.esri.core.geometry.ogc.OGCMultiPoint ogcMultiPoint = new com.esri.core.geometry.ogc.OGCMultiPoint(multiPoint,sr);
-	   System.out.println(ogcMultiPoint.asText());
+	   System.out.println(point.asText());
 	 }
 }
