@@ -8,9 +8,7 @@ public abstract class Geometry implements Serializable {
 	private static final long serialVersionUID = 5594065733859514709L;
 
 	private SpatialReferenceSystem spatialRS;
-	private boolean is3D = false;
-	private boolean isMeasured = false;
-	
+
 	public Geometry() {
 		
 	}
@@ -85,22 +83,10 @@ public abstract class Geometry implements Serializable {
 	public abstract int dimension();
 	
 	public abstract boolean isEmpty();
-
-	public void setIs3D(boolean is3D){
-		this.is3D = is3D;
-	}
 	
-	public boolean is3D(){
-	    return this.is3D;	
-	}
-
-	public void setIsMeasured(boolean isMeasured){
-	    this.isMeasured = isMeasured;	
-	}
+	public abstract boolean is3D();
 	
-	public boolean isMeasured(){
-	    return this.isMeasured;	
-	}
+	public abstract boolean isMeasured();
 	
 	public abstract String asText();
 	
