@@ -10,6 +10,15 @@ public class ESRITest {
 	   Point pt =new Point(1,2,3);
 	   pt.setM(2.8);
 	   com.esri.core.geometry.ogc.OGCPoint point = new com.esri.core.geometry.ogc.OGCPoint(pt , sr) ;
-	   System.out.println(point.asText());
+	   
+	   Point pt1 =new Point(1,2,3);
+	   pt1.setM(2.8);
+	   com.esri.core.geometry.ogc.OGCPoint point1 = new com.esri.core.geometry.ogc.OGCPoint(pt1 , sr) ;
+	   
+	   com.esri.core.geometry.MultiPoint multiPoint = new  com.esri.core.geometry.MultiPoint();
+	   multiPoint.add(pt);
+	   multiPoint.add(pt1);
+	   com.esri.core.geometry.ogc.OGCMultiPoint ogcMultiPoint = new com.esri.core.geometry.ogc.OGCMultiPoint(multiPoint,sr);
+	   System.out.println(ogcMultiPoint.asText());
 	 }
 }
