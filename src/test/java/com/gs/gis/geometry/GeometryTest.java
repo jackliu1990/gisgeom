@@ -9,12 +9,37 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gs.gis.io.wkb.ByteWriter;
 import com.gs.gis.io.wkb.WKBWriter;
+import com.gs.gis.io.wkt.WKTWriter;
 import com.gs.gis.referenceSystems.SpatialReferenceSystem;
 import com.vividsolutions.jts.geom.GeometryFactory;
 
 public class GeometryTest {
-
+  
 	@Test
+	public void wktTest(){
+		SpatialReferenceSystem spatialReference = new SpatialReferenceSystem(4326);
+		Point point = new Point(116.0,40.0,2345.0);
+		point.setSpatialReference(spatialReference);
+		
+		MultiPoint multiPoint = new MultiPoint();
+		multiPoint.setSpatialReference(spatialReference);
+		multiPoint.addGeometry(point);
+		multiPoint.addGeometry(point);
+		
+		//System.out.print(WKTWriter.writeGeometry(multiPoint));
+		
+		LinearRing linearRing = new LinearRing();
+		linearRing.addPoint(point);
+		linearRing.addPoint(point);
+		linearRing.addPoint(point);
+		linearRing.addPoint(point);
+		
+		System.out.print(WKTWriter.writeGeometry(linearRing));
+		
+	}
+	
+	
+	//@Test
 	public void CreatePoint() throws IOException {
 		SpatialReferenceSystem spatialReference = new SpatialReferenceSystem(4326);
 		Point point = new Point(116.0,40.0,2345.0);

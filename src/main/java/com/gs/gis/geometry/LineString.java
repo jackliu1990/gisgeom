@@ -25,6 +25,10 @@ public class LineString extends Curve {
 	public int numPoints() {
 		return points.size();
 	}
+	
+	public List<Point> getPoints(){
+		return this.points;
+	}
 
 	public void addPoint(Point point) {
 		points.add(point);

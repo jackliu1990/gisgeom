@@ -30,4 +30,9 @@ public class Line extends LineString {
 			return;
 		super.addPoint(point);
 	}
+	
+	@Override
+	public EnumGeomType geometryType() {
+		return EnumGeomType.Line;
+	}
 }

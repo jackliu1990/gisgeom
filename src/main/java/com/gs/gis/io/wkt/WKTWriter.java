@@ -1,9 +1,12 @@
 package com.gs.gis.io.wkt;
 
+import java.util.List;
+
 import com.gs.gis.geometry.EnumGeomType;
 import com.gs.gis.geometry.Geometry;
 import com.gs.gis.geometry.GeometryCollection;
 import com.gs.gis.geometry.LineString;
+import com.gs.gis.geometry.LinearRing;
 import com.gs.gis.geometry.MultiLineString;
 import com.gs.gis.geometry.MultiPoint;
 import com.gs.gis.geometry.MultiPolygon;
@@ -43,10 +46,14 @@ public class WKTWriter {
 			builder.append(")");
 			return builder.toString();
 		}
-		return builder.toString();
+		else{
+			builder.append(" ").append("(");
+			builder.append(writeGeometryContent(geometry));
+			builder.append(")");
+			return builder.toString();
+		}
 	
 	}
-	
 	
 	
 	private static void writeTriangle(Triangle geometry, StringBuilder builder) {
@@ -70,54 +77,90 @@ public class WKTWriter {
 
 
 
-	private static void WriteGeometryCollection(GeometryCollection<?> geometry, StringBuilder builder) {
-		// TODO Auto-generated method stub
-		
+	private static void WriteGeometryCollection(GeometryCollection<?> geometryCollection, StringBuilder builder) {
+		 int size = geometryCollection.numGeometries();
+		 for(int i=0;i<size;i++){
+			 Geometry geometry = geometryCollection.geometryN(i);
+			 builder.append(writeGeometry(geometry)+", ");
+		 }
+		 builder.deleteCharAt(builder.length()-1);
 	}
 
 
 
 	private static void writeMultiPolygon(MultiPolygon geometry, StringBuilder builder) {
-		// TODO Auto-generated method stub
-		
+		writeGC(geometry, builder);
 	}
 
 
 
 	private static void writeMultiLineString(MultiLineString geometry, StringBuilder builder) {
-		// TODO Auto-generated method stub
-		
+		writeGC(geometry, builder);
 	}
 
 
 
-	private static void writeMultiPoint(MultiPoint geometry, StringBuilder builder) {
-		// TODO Auto-generated method stub
-		
+	private static void writeMultiPoint(MultiPoint multiPoint, StringBuilder builder) {
+		writeGC(multiPoint,builder);
+	}
+
+
+	
+	private static void writeLinearRing(LinearRing linearRing,StringBuilder builder){
+		builder.append("(");
+		writeLineString(linearRing,builder);
+		builder.append("),");
+	}
+
+	private static void writePolygon(Polygon polygon, StringBuilder builder) {
+		LinearRing exterorRing = polygon.exterorRing();
+		writeLinearRing(exterorRing,builder);
+		int size = polygon.numInteriorRings();
+		for(int i=0;i<size;i++){
+			LinearRing interiorRing = polygon.interiorRingN(i);
+			writeLinearRing(interiorRing,builder);
+		}
+		builder.deleteCharAt(builder.length()-1);
 	}
 
 
 
-	private static void writePolygon(Polygon geometry, StringBuilder builder) {
-		// TODO Auto-generated method stub
-		
+	private static void writeLineString(LineString lineString, StringBuilder builder) {
+		writePoints(lineString.getPoints(),builder);
 	}
-
-
-
-	private static void writeLineString(LineString geometry, StringBuilder builder) {
-		// TODO Auto-generated method stub
-		
+	
+	private static void writeGC(GeometryCollection<?> geometryCollection,StringBuilder builder){
+		int size = geometryCollection.numGeometries();
+		for(int i=0;i<size;i++){
+			Geometry geometry = geometryCollection.geometryN(i);
+			builder.append("(");
+			builder.append(writeGeometryContent(geometry));
+			builder.append("),");
+		}
+	    builder.deleteCharAt(builder.length()-1);
 	}
-
-
+	
+	private static void writePoints(List<Point> points,StringBuilder builder){
+	   StringBuilder pointsBuilder = new StringBuilder();
+	   for(int i=0;i<points.size();i++){
+		   Point point = points.get(i);
+		   writePoint(point,pointsBuilder);
+		   pointsBuilder.append(",");
+	   }
+	   builder.append(pointsBuilder.substring(1, pointsBuilder.length() - 1));
+	}
 
 	private static void writePoint(Point point, StringBuilder builder) {
-		 
-		
+	    builder.append(point.getX());
+	    builder.append(" ").append(point.getY());
+	    if(point.is3D()){
+	    	builder.append(" ").append(point.getZ());
+	    }
+	    if(point.isMeasured()){
+	    	builder.append(" ").append(point.getM());
+	    }
 	}
-
-
+	
 
 	private static String writeGeometryContent(Geometry geometry){
 		StringBuilder builder = new StringBuilder();
@@ -167,6 +210,12 @@ public class WKTWriter {
 			break;
 		case Triangle:
 			writeTriangle((Triangle) geometry,builder);
+			break;
+		case LinearRing:
+			writeLineString((LineString) geometry,builder);
+			break;
+		case Line:
+			writeLineString((LineString) geometry,builder);
 			break;
 		default:
 			throw new RuntimeException("Geometry Type not supported" + geomType);

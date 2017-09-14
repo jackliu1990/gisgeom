@@ -2,6 +2,8 @@ package com.gs.gis.geometry;
 
 import com.esri.core.geometry.Point;
 import com.esri.core.geometry.SpatialReference;
+import com.esri.core.geometry.ogc.OGCGeometry;
+import com.esri.core.geometry.ogc.OGCPolygon;
 
 public class ESRITest {
 
@@ -20,5 +22,11 @@ public class ESRITest {
 	   multiPoint.add(pt1);
 	   com.esri.core.geometry.ogc.OGCMultiPoint ogcMultiPoint = new com.esri.core.geometry.ogc.OGCMultiPoint(multiPoint,sr);
 	   System.out.println(point.asText());
+	   
+		OGCGeometry g = OGCGeometry
+				.fromText("POLYGON((-10 -10,10 -10,10 10,-10 10,-10 -10),(-5 -5, -5 5, 5 5, 5 -5, -5 -5))");
+		OGCPolygon p = (OGCPolygon) g;
+		System.out.println(p.exteriorRing().asText());
+		
 	 }
 }

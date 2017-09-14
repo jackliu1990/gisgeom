@@ -30,7 +30,7 @@ public class LinearRing extends LineString {
 					"Invalid number of points in LinearRing (found " + this.numPoints() + " - must be 0 or >= 4)");
 		}
 	}
-
+	
 	public void close() {
 		if (!isClosed()) {
 			Point point = startPoint();
@@ -54,7 +54,7 @@ public class LinearRing extends LineString {
 
 	@Override
 	public EnumGeomType geometryType() {
-		return EnumGeomType.LineString;
+		return EnumGeomType.LinearRing;
 	}
 
 }
