@@ -18,8 +18,8 @@ public class JTSTest {
      //System.out.print(pointGeoJson);
      
       WKTReader reader = new WKTReader( geometryFactory );  
-      //com.vividsolutions.jts.geom.Point point2 = ( com.vividsolutions.jts.geom.Point) reader.read("POINT Z(1 1 5)");  
-      //System.out.print(point2.getCoordinate().z);
+      com.vividsolutions.jts.geom.Point point2 = ( com.vividsolutions.jts.geom.Point) reader.read("POINT Z(1 1 5)");  
+      System.out.print(point2.getCoordinate().z);
       
       WKTWriter writer = new WKTWriter(3);
       System.out.println(writer.write(point));
