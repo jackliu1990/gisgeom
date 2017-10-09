@@ -133,7 +133,6 @@ public class WKTReader {
 		    if (isNumberNext()) {
 		    	point.setZ(getNextNumber());
 		    }
-		    if()
 		    return point;
 		  }
 		  
