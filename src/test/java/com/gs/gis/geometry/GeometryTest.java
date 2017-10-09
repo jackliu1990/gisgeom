@@ -26,7 +26,7 @@ public class GeometryTest {
 		multiPoint.addGeometry(point);
 		multiPoint.addGeometry(point);
 		
-		//System.out.print(WKTWriter.writeGeometry(multiPoint));
+		System.out.print(WKTWriter.writeGeometry(multiPoint));
 		
 		LinearRing linearRing = new LinearRing();
 		linearRing.addPoint(point);

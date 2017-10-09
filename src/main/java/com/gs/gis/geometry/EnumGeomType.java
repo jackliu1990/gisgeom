@@ -183,7 +183,7 @@ public enum EnumGeomType {
 		@Override
 		public String typeWKT() {
 			// TODO Auto-generated method stub
-			return null;
+			return "LineString";
 		}
 
 		@Override
