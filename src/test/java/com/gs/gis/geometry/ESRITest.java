@@ -1,5 +1,6 @@
 package com.gs.gis.geometry;
 
+import com.esri.core.geometry.MultiPath;
 import com.esri.core.geometry.Point;
 import com.esri.core.geometry.SpatialReference;
 import com.esri.core.geometry.ogc.OGCGeometry;
@@ -24,7 +25,7 @@ public class ESRITest {
 	   System.out.println(point.asText());
 	   
 		OGCGeometry g = OGCGeometry
-				.fromText("POLYGON((-10 -10,10 -10,10 10,-10 10,-10 -10),(-5 -5, -5 5, 5 5, 5 -5, -5 -5))");
+				.fromText("Polygon((-5 -5, -5 5, 5 5, 5 -5, -5 -5),(-5 -5, -5 5, 5 5, 5 -5, -5 -5))");
 		OGCPolygon p = (OGCPolygon) g;
 		System.out.println(p.exteriorRing().asText());
 		
